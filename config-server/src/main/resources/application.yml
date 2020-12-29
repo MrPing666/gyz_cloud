@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/MrPing666/config-repo.git
+          search-paths: /**
+          basedir: /data/config/repos
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

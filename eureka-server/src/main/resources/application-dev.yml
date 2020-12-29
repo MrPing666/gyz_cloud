@@ -1,0 +1,20 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+    # 心跳间隔
+    #lease-renewal-interval-in-seconds: 3
+    # 服务失效时间： 如果多久没有收到请求，则可以删除
+    #lease-expiration-duration-in-seconds: 7
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false
+    #集群之间相互更新节点信息的时间频率
+    #peer-eureka-nodes-update-interval-ms: 6000
+    # Eureka服务器清理无效节点的时间间隔
+    #eviction-interval-timer-in-ms: 60000

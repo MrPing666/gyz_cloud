@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.8.9-management-alpine
+    container_name: rabbitmqTest
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=12345678
+    ports:
+      - 15672:15672
+      - 5672:5672
+    volumes:
+      - D:\docker\rabbitmq\data:/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+#  mysql:
+#    image: mysql:8.0.21
+#    container_name: mysql
+#    command: --default-authentication-plugin=mysql_native_password
+#    ports:
+#      - 3306:3306
+#    environment:
+#      MYSQL_ROOT_PASSWORD: 12345678
+#    volumes:
+#      - D:\docker\mysql\conf:/etc/mysql/conf.d
+#      - D:\docker\mysql\data:/var/lib/mysql
+#
+#  redis:
+#    image: redis:6.0.6
+#    container_name: redis
+#    ports:
+#      - 6379:6379
+#    volumes:
+#      - D:\docker\redis\data:/data
