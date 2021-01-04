@@ -1,6 +1,5 @@
 package com.aaron.gyz.userclient.hystric;
 
-import com.aaron.gyz.common.exception.CloudException;
 import com.aaron.gyz.userclient.UserClient;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -20,9 +19,9 @@ public class UserClientFallbackFactory implements FallbackFactory<UserClient> {
 
         return new UserClient() {
             @Override
-            public String users() {
-                log.error("feign [users] Exception: ", throwable);
-                throw new CloudException("feign [users] Exception: ", throwable);
+            public String getById(long id) {
+                log.error("feign [getById] Exception:", throwable.getMessage());
+                return String.format("user [%s] not exist!", id);
             }
         };
     }

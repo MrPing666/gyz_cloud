@@ -8,6 +8,7 @@ package com.aaron.gyz.common.constant;
 public class Constant {
 
     public static final String BASE_PACKAGE = "com.aaron.gyz";
+    public static final String USER_CLIENT_PACKAGE = "com.aaron.gyz.userclient";
 
     public interface Auth {
         String AUTHORIZATION_HEADER = "authorization";

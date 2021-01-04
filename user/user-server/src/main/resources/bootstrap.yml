@@ -16,8 +16,5 @@ spring:
     username: root
     password: 12345678
 
-feign:
-  hystrix:
-    enabled: true
 
 

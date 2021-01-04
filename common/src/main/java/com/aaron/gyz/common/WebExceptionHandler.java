@@ -41,7 +41,8 @@ public class WebExceptionHandler {
     public ResponseEntity<ApiErrorResponse> handleException(FeignException e) {
         log.error("feign exception: ", e);
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                .body(ApiErrorResponse.createByMessage("The service is currently unavailable, please try again later!"));
+                .body(ApiErrorResponse.createByMessage(
+                        "The service is currently unavailable, please try again later!"));
     }
 
     @ExceptionHandler(BindException.class)
