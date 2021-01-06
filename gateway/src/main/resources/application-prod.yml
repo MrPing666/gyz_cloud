@@ -1,0 +1,48 @@
+server:
+  port: 81
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 50MB
+
+  rabbitmq:
+    host: SERVER_HOST
+    port: 5672
+    username: root
+    password: 12345678
+    virtual-host: /
+
+zuul:
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+    connection-request-timeout-millis: 20000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 80000
+  shareSecurityContext: true
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+  eager-load:
+    enabled: true
+
+logging:
+  level:
+    org.springframework.cloud.openfeign: error
+    org.springframework.cloud.bus: error
+    com.scott.neptune: error

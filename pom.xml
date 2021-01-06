@@ -17,6 +17,7 @@
     <modules>
         <module>config-server</module>
         <module>eureka-server</module>
+        <module>gateway</module>
         <module>common</module>
         <module>score</module>
         <module>user</module>

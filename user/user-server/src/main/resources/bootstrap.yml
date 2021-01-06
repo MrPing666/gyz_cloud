@@ -16,5 +16,12 @@ spring:
     username: root
     password: 12345678
 
+#actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 
 

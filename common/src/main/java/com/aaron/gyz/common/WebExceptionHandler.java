@@ -24,6 +24,8 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class WebExceptionHandler {
 
+    private static final String UNAVAILABLE = "The service is currently unavailable, please try again later!";
+
     @ExceptionHandler(CloudException.class)
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     public ResponseEntity<ApiErrorResponse> handleException(CloudException e) {
@@ -41,8 +43,7 @@ public class WebExceptionHandler {
     public ResponseEntity<ApiErrorResponse> handleException(FeignException e) {
         log.error("feign exception: ", e);
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                .body(ApiErrorResponse.createByMessage(
-                        "The service is currently unavailable, please try again later!"));
+                .body(ApiErrorResponse.createByMessage(UNAVAILABLE));
     }
 
     @ExceptionHandler(BindException.class)
@@ -67,14 +68,14 @@ public class WebExceptionHandler {
     public ResponseEntity<ApiErrorResponse> handleException(RuntimeException e) {
         log.error("runtime exception: ", e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ApiErrorResponse.createByMessage("The service is currently unavailable, please try again later!"));
+                .body(ApiErrorResponse.createByMessage(UNAVAILABLE));
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiErrorResponse> handleException(Exception e) {
         log.error("exception: ", e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ApiErrorResponse.createByMessage("The service is currently unavailable, please try again later!"));
+                .body(ApiErrorResponse.createByMessage(UNAVAILABLE));
     }
 
 }
